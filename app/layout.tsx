@@ -3,7 +3,8 @@ import { Inter as FontSans } from 'next/font/google';
 import '../styles/globals.css';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { buttonVariants } from '../components/ui/button';
+import { buttonVariants } from '../components/ui/Button';
+import { SignIn } from '../components/SignIn';
 
 const fontSans = FontSans({
 	subsets: ['latin'],
@@ -44,6 +45,7 @@ export default function RootLayout({
 								Sign in
 							</span>
 						</Link>
+						<SignIn />
 					</div>
 				</header>
 				{children}
