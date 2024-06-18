@@ -2,8 +2,14 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import GitHub from 'next-auth/providers/github';
 import { hashPassword } from './utils/password';
+import { signInSchema } from './lib/zod';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+	adapter: PrismaAdapter(prisma),
 	providers: [
 		GitHub,
 		Credentials({
@@ -13,13 +19,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 				email: { type: 'text', placeholder: 'email@email.com' },
 				password: { type: 'password', placeholder: 'password' },
 			},
-			authorize: async (credentials: any) => {
+			authorize: async (credentials) => {
 				let user = null;
+				const { email, password } = await signInSchema.parseAsync(
+					credentials
+				);
 				// logic to salt and hash password
-				const hashedPassword = hashPassword(credentials.password);
+				const hashedPassword = hashPassword(password);
 
 				// logic to verify if user exists
-				// user = await getUserFromDb(credentials.email, hashedPassword);
+				// user = await getUserFromDb(email, hashedPassword);
 
 				if (!user) {
 					// No user found, so this is their first attempt to login
