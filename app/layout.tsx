@@ -29,25 +29,6 @@ export default function RootLayout({
 					fontSans.variable
 				)}
 			>
-				<header className='flex'>
-					ViewVault{' '}
-					<div className='mt-4 mr-4 ml-auto'>
-						<Link href=''>
-							<span className='hover:underline'>
-								Already have an account?
-							</span>
-							<span
-								className={
-									buttonVariants({ variant: 'outline' }) +
-									' ml-4'
-								}
-							>
-								Sign in
-							</span>
-						</Link>
-						<SignIn />
-					</div>
-				</header>
 				{children}
 				<footer className='text-center mb-2'>Viewvault</footer>
 			</body>
