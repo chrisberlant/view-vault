@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { buttonVariants } from '@/components/ui/Button';
+import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
-import { SignIn } from '../components/SignIn';
 import LoginModal from '../components/LoginButton';
 import RegisterButton from '../components/RegisterButton';
 
@@ -10,7 +9,6 @@ export default function Home() {
 		<>
 			<header className='flex'>
 				ViewVault <LoginModal homePage={true} />
-				{/* <SignIn /> */}
 			</header>
 			<main className='flex min-h-screen flex-col items-center p-12 gap-4'>
 				<h1 className='text-4xl mb-8'>Welcome to ViewVault</h1>

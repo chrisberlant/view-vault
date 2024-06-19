@@ -1,8 +1,8 @@
 import { signIn } from '@/auth';
 import { Label } from '@radix-ui/react-label';
-import { Input } from './ui/Input';
-import { Button } from './ui/Button';
-import { DialogFooter } from './ui/Dialog';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { DialogFooter } from './ui/dialog';
 
 export function SignIn() {
 	return (

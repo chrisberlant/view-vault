@@ -1,17 +1,12 @@
-import { Button, buttonVariants } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
-	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from '@/components/ui/Dialog';
-import { Input } from '@/components/ui/Input';
-import { Label } from '@/components/ui/Label';
-import Link from 'next/link';
-import { signIn } from '../auth';
+} from '@/components/ui/dialog';
 import { SignIn } from './SignIn';
 
 export default function LoginButton({
