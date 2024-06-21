@@ -9,22 +9,11 @@ import {
 } from '@/components/ui/dialog';
 import { SignIn } from './SignIn';
 
-export default function LoginButton({
-	homePage = false,
-}: {
-	homePage?: boolean;
-}) {
+export default function LoginRegisterButton() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<div className='ml-auto'>
-					{homePage && (
-						<span className='hover:underline mr-4'>
-							Already have an account?
-						</span>
-					)}
-					<Button variant='outline'>Sign in</Button>
-				</div>
+				<Button className='mb-8'>Sign in / Sign up</Button>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
