@@ -28,7 +28,9 @@ export default function RootLayout({
 				)}
 			>
 				{children}
-				<footer className='text-center mb-2'>Viewvault</footer>
+				<footer className='text-center mb-2 mt-96'>
+					Viewvault 2024
+				</footer>
 			</body>
 		</html>
 	);

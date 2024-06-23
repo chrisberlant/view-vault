@@ -7,7 +7,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
-import { SignIn } from './SignIn';
+import SignIn from './SignIn';
 
 export default function LoginRegisterButton() {
 	return (
@@ -23,9 +23,6 @@ export default function LoginRegisterButton() {
 					</DialogDescription>
 				</DialogHeader>
 				<SignIn />
-				{/* <DialogFooter>
-					<Button type='submit'>Sign in</Button>
-				</DialogFooter> */}
 			</DialogContent>
 		</Dialog>
 	);

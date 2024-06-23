@@ -1,11 +1,19 @@
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
-import LoginRegisterButton from '../components/LoginRegisterButton';
+import LoginRegisterButton from '../components/AuthComponents/LoginRegisterButton';
 import { auth } from '../auth';
+import LogoutButton from '../components/AuthComponents/LogoutButton';
+import { redirect } from 'next/navigation';
 
-export default async function Home() {
+export default async function Page() {
 	const session = await auth();
+	if (session) return redirect('/home');
+	// const user = await prisma.user.create({
+	// 	data: {
+	// 		name: 'test',
+	// 	},
+	// });
 	return (
 		<>
 			<header className='flex'>ViewVault</header>
@@ -13,9 +21,6 @@ export default async function Home() {
 				<h1 className='text-4xl mb-8'>Welcome to ViewVault</h1>
 				<Image src='/films.jpg' alt='' width={800} height={800} />
 				<div className='flex flex-col items-center mt-8'>
-					{session?.user
-						? 'Connecté' + session?.user.email
-						: 'Non connecté'}
 					<LoginRegisterButton />
 					<Link
 						href=''
