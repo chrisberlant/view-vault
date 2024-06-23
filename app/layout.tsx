@@ -23,12 +23,12 @@ export default function RootLayout({
 		<html lang='en'>
 			<body
 				className={cn(
-					'min-h-screen bg-background font-sans antialiased my-4 mx-4',
+					'min-h-screen bg-background font-sans antialiased my-4 mx-4 flex flex-col',
 					fontSans.variable
 				)}
 			>
 				{children}
-				<footer className='text-center mb-2 mt-96'>
+				<footer className='text-center pt-2 mt-auto'>
 					Viewvault 2024
 				</footer>
 			</body>

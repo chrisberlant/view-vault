@@ -13,7 +13,7 @@ export default function LoginRegisterButton() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button className='mb-8'>Sign in / Sign up</Button>
+				<Button>Sign in / Sign up</Button>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
 				<DialogHeader>
