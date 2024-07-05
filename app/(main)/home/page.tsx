@@ -7,19 +7,13 @@ export default async function Page() {
 			<ShowSection
 				title='Movies now playing'
 				apiUrl='/movie/now_playing'
-				type='movies'
 			/>
 
 			<ShowSection
 				title='Movies trending this week'
 				apiUrl='/trending/movie/week'
-				type='movies'
 			/>
-			<ShowSection
-				title='Series on the air'
-				apiUrl='/tv/on_the_air'
-				type='series'
-			/>
+			<ShowSection title='Series on the air' apiUrl='/tv/on_the_air' />
 		</div>
 	);
 }

@@ -22,14 +22,12 @@ export default function RootLayout({
 		<html lang='en'>
 			<body
 				className={cn(
-					'min-h-screen bg-background font-sans antialiased my-4 mx-4 flex flex-col',
+					'min-h-screen bg-background font-sans antialiased px-3 text-foreground lg:px-8 sm:px-4 py-2 sm:py-3 flex flex-col',
 					fontSans.variable
 				)}
 			>
 				{children}
-				<footer className='text-center pt-2 mt-auto'>
-					Viewvault 2024
-				</footer>
+				<footer className='text-center pt-3'>ViewVault 2024</footer>
 			</body>
 		</html>
 	);
