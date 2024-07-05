@@ -1,4 +1,4 @@
-import { signIn } from '@/auth';
+import { signIn } from '@/lib/auth';
 import { Label } from '@radix-ui/react-label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';

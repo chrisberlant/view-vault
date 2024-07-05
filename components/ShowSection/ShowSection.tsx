@@ -15,6 +15,7 @@ export default async function ShowSection({
 	type,
 }: ShowSectionType) {
 	const shows: ShowsListType = await fetchApi(apiUrl);
+
 	return (
 		<section>
 			<h2 className='text-4xl mb-4 font-bold'>{title}</h2>

@@ -1,7 +1,5 @@
-import { data } from 'tailwindcss/defaultTheme';
-
 export default async function fetchApi(route: string) {
-	const tmdbUrl = 'https://api.themoviedb.org/3/';
+	const tmdbUrl = 'https://api.themoviedb.org/3';
 	const apiKey = process.env.TMDB_API_KEY;
 
 	try {

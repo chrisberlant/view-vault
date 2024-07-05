@@ -4,13 +4,12 @@ import ShowSection from '@/components/ShowSection/ShowSection';
 export default async function Page() {
 	return (
 		<div className='flex flex-col gap-12'>
-			<div>
-				<ShowSection
-					title='Movies now playing'
-					apiUrl='/movie/now_playing'
-					type='movies'
-				/>
-			</div>
+			<ShowSection
+				title='Movies now playing'
+				apiUrl='/movie/now_playing'
+				type='movies'
+			/>
+
 			<ShowSection
 				title='Movies trending this week'
 				apiUrl='/trending/movie/week'
