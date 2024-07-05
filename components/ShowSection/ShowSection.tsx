@@ -2,6 +2,7 @@ import fetchApi from '@/utils/fetchApi';
 import { MovieType, SeriesType, ShowsListType } from '@/types/tmdbTypes';
 import Image from 'next/image';
 import { imagesPath, imagesSize } from '@/utils/tmdb';
+import Link from 'next/link';
 
 type ShowSectionType = {
 	title: string;
@@ -15,15 +16,20 @@ export default async function ShowSection({
 	type,
 }: ShowSectionType) {
 	const shows: ShowsListType = await fetchApi(apiUrl);
+	const showType = type === 'movies' ? 'movie' : 'tv';
 
 	return (
 		<section>
 			<h2 className='text-4xl mb-4 font-bold'>{title}</h2>
 			<div className='flex flex-wrap gap-8 items-stretch justify-center'>
 				{shows.results.map((show) => (
-					<div key={show.id} className='flex flex-col max-w-36'>
+					<Link
+						key={show.id}
+						className='flex flex-col max-w-36'
+						href={`show/${show.id}?type=${showType}`}
+					>
 						<span className='text-center flex-1 flex items-center justify-center'>
-							{type === 'movies'
+							{showType === 'movie'
 								? (show as MovieType)?.title
 								: (show as SeriesType)?.name}
 						</span>
@@ -32,13 +38,13 @@ export default async function ShowSection({
 							width={imagesSize}
 							height={imagesSize}
 							alt={`${
-								type === 'movies'
+								showType === 'movie'
 									? (show as MovieType)?.title
 									: (show as SeriesType)?.name
 							} poster`}
 							className='mt-auto'
 						/>
-					</div>
+					</Link>
 				))}
 			</div>
 		</section>

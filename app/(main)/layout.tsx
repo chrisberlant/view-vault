@@ -22,9 +22,7 @@ export default async function Layout({
 					<LoginRegisterButton />
 				)}
 			</header>
-			<main className='flex items-center justify-center border flex-1'>
-				{children}
-			</main>
+			<main className='flex border flex-1'>{children}</main>
 		</>
 	);
 }

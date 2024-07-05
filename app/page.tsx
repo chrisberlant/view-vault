@@ -3,7 +3,6 @@ import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
 import LoginRegisterButton from '../components/auth/LoginRegisterButton';
 import { auth } from '../lib/auth';
-import LogoutButton from '../components/auth/LogoutButton';
 import { redirect } from 'next/navigation';
 
 export default async function Page() {
