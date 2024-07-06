@@ -11,7 +11,9 @@ export default function SignIn() {
 				className='grid gap-4 py-4'
 				action={async (formData) => {
 					'use server';
-					await signIn('credentials', formData);
+					await signIn('credentials', formData, {
+						redirectTo: '/home',
+					});
 				}}
 			>
 				<div className='grid grid-cols-4 items-center gap-4'>
@@ -37,7 +39,7 @@ export default function SignIn() {
 			<form
 				action={async () => {
 					'use server';
-					await signIn('github', { callbackUrl: '/home' });
+					await signIn('github', { redirectTo: '/home' });
 				}}
 			>
 				<button

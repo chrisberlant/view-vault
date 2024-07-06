@@ -32,7 +32,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 				);
 				// logic to salt and hash password
 				const hashedPassword = hashPassword(password);
-
+				console.log('Autorisation');
 				// logic to verify if user exists
 				// user = await getUserFromDb(email, hashedPassword);
 

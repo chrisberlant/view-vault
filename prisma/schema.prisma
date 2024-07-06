@@ -5,7 +5,7 @@ datasource db {
  
 generator client {
   provider = "prisma-client-js"
-   previewFeatures = ["driverAdapters"]
+  previewFeatures = ["driverAdapters"]
 }
  
 model User {
@@ -16,6 +16,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  favorites     String[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
  

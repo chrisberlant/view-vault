@@ -1,7 +1,7 @@
 import { MovieType, SeriesType } from '@/types/tmdbTypes';
 import fetchApi from '@/utils/fetchApi';
 import Image from 'next/image';
-import { imagesPath } from '../../../../utils/tmdb';
+import { imagesPath } from '@/utils/tmdb';
 
 export default async function Page({
 	params,
