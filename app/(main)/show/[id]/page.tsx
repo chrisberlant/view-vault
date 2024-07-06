@@ -1,7 +1,8 @@
-import { MovieType, SeriesType } from '@/types/tmdbTypes';
+import { FailedRequest, MovieType, SeriesType } from '@/types/tmdbTypes';
 import fetchApi from '@/utils/fetchApi';
 import Image from 'next/image';
 import { imagesPath } from '@/utils/tmdb';
+import { notFound } from 'next/navigation';
 
 export default async function Page({
 	params,
@@ -13,7 +14,8 @@ export default async function Page({
 	const show: MovieType | SeriesType = await fetchApi(
 		`/${searchParams.type}/${params.id}`
 	);
-	const imagesSize = 780;
+
+	if (!show) notFound();
 
 	return (
 		<section>

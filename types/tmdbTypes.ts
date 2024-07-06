@@ -18,6 +18,12 @@ export type MovieType = {
 
 export type SeriesType = Omit<MovieType, 'title'> & { name: string };
 
+export type FailedRequest = {
+	success: boolean;
+	status_code: number;
+	status_message: 'The resource you requested could not be found.';
+};
+
 export type ShowsListType = {
 	dates: {
 		maximum: Date;

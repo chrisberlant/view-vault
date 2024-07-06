@@ -25,6 +25,7 @@ export default async function Layout({
 				{session ? (
 					<>
 						<LogoutButton />
+						<Link href='/favorites'>Favorites</Link>
 						<span>{session?.user?.email}</span>
 					</>
 				) : (
