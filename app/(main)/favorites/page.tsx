@@ -8,6 +8,7 @@ import { auth } from '@/lib/auth';
 export default async function Page() {
 	const session = await auth();
 	if (!session) return null;
+	console.log(session);
 	const favorites = session.user?.favorites;
 
 	return (

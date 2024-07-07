@@ -1,7 +1,6 @@
-import { redirect } from 'next/navigation';
-import { auth } from '../../lib/auth';
-import LogoutButton from '../../components/auth/LogoutButton';
-import LoginRegisterButton from '../../components/auth/LoginRegisterButton';
+import { auth } from '@/lib/auth';
+import LogoutButton from '@/components/auth/LogoutButton';
+import LoginRegisterButton from '@/components/auth/LoginRegisterButton';
 import Link from 'next/link';
 import { Home } from 'lucide-react';
 
