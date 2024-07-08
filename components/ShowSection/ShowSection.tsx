@@ -1,11 +1,9 @@
 import fetchApi from '@/utils/fetchApi';
-import { MovieType, SeriesType, ShowsListType } from '@/types/tmdbTypes';
+import { ShowsListType } from '@/types/tmdbTypes';
 import Image from 'next/image';
 import { imagesPath } from '@/utils/tmdb';
 import Link from 'next/link';
-import { HeartIcon } from 'lucide-react';
 import { auth } from '@/lib/auth';
-import prisma from '@/lib/prisma';
 import FavoriteHeart from '../FavoriteHeart/FavoriteHeart';
 
 type ShowSectionType = {

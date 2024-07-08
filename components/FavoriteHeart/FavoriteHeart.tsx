@@ -1,77 +1,42 @@
+'use client';
 import { HeartIcon } from 'lucide-react';
-import prisma from '@/lib/prisma';
-import { auth } from '../../lib/auth';
+import {
+	removeFromFavorites,
+	addToFavorites,
+} from '@/server-actions/favorites';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
-export default async function FavoriteHeart({
+export default function FavoriteHeart({
 	isFavorite,
 	id,
 }: {
 	isFavorite: boolean;
 	id: number;
 }) {
-	const session = await auth();
+	const router = useRouter();
 
-	const addToFavorites = async (id: number) => {
-		'use server';
-		await prisma.user.update({
-			where: {
-				email: session?.user?.email!,
-			},
-			data: {
-				favorites: {
-					push: id,
-				},
-			},
-		});
-	};
-
-	const removeFromFavorites = async (id: number) => {
-		'use server';
-		const user = await prisma.user.findUnique({
-			where: { email: session?.user?.email! },
-			select: { favorites: true },
-		});
-		await prisma.user.update({
-			where: {
-				email: session?.user?.email!,
-			},
-			data: {
-				favorites: {
-					set: user?.favorites.filter((favorite) => favorite !== id),
-				},
-			},
-		});
-	};
-
-	return (
-		session && (
-			<form className='absolute bottom-2 right-2 flex items-end'>
-				{isFavorite ? (
-					<button
-						formAction={async () => {
-							'use server';
-							removeFromFavorites(id);
-						}}
-					>
-						<HeartIcon
-							fill='red'
-							className='hover:scale-125 cursor-pointer'
-						/>
-					</button>
-				) : (
-					<button
-						formAction={async () => {
-							'use server';
-							addToFavorites(id);
-						}}
-					>
-						<HeartIcon
-							fill='grey'
-							className='hover:scale-125 hover:fill-red-500 hover:border-red-500 cursor-pointer'
-						/>
-					</button>
-				)}
-			</form>
-		)
+	return isFavorite ? (
+		<button
+			onClick={async () => {
+				await removeFromFavorites(id);
+				router.refresh();
+				toast('Removed from favorites');
+			}}
+			className='absolute bottom-2 right-2 flex items-end'
+		>
+			<HeartIcon fill='red' className='hover:scale-125 cursor-pointer' />
+		</button>
+	) : (
+		<button
+			onClick={async () => {
+				await addToFavorites(id);
+				router.refresh();
+				toast('Added to favorites');
+			}}
+			className='absolute bottom-2 right-2 flex items-end'
+		>
+			<HeartIcon fill='grey' className='hover:scale-125 cursor-pointer' />
+		</button>
 	);
 }

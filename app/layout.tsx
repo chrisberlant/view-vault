@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
+import { Toaster } from 'sonner';
+import { ThemeProvider } from '@/components/ThemeToggler/ThemeToggler';
 
 const fontSans = FontSans({
 	subsets: ['latin'],
@@ -19,16 +21,19 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
-			<body
-				className={cn(
-					'min-h-screen bg-background font-sans antialiased px-3 text-foreground lg:px-8 sm:px-4 py-2 sm:py-3 flex flex-col',
-					fontSans.variable
-				)}
-			>
-				{children}
-				<footer className='text-center pt-3'>ViewVault 2024</footer>
-			</body>
-		</html>
+		<ThemeProvider>
+			<html lang='en'>
+				<body
+					className={cn(
+						'min-h-screen bg-background font-sans antialiased px-3 text-foreground lg:px-8 sm:px-4 py-2 sm:py-3 flex flex-col',
+						fontSans.variable
+					)}
+				>
+					<Toaster />
+					{children}
+					<footer className='text-center pt-3'>ViewVault 2024</footer>
+				</body>
+			</html>
+		</ThemeProvider>
 	);
 }

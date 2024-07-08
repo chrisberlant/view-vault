@@ -2,7 +2,8 @@ import { auth } from '@/lib/auth';
 import LogoutButton from '@/components/auth/LogoutButton';
 import LoginRegisterButton from '@/components/auth/LoginRegisterButton';
 import Link from 'next/link';
-import { Home } from 'lucide-react';
+import { HomeIcon } from 'lucide-react';
+import { ThemeToggler } from '@/components/ThemeToggler/ThemeToggler';
 
 export default async function Layout({
 	children,
@@ -18,9 +19,10 @@ export default async function Layout({
 					href='/home'
 					className='mr-auto ml-4 flex items-center gap-2'
 				>
-					<Home />
+					<HomeIcon />
 					ViewVault
 				</Link>
+				<ThemeToggler />
 				{session ? (
 					<>
 						<LogoutButton />
