@@ -4,8 +4,8 @@ import {
 	removeFromFavorites,
 	addToFavorites,
 } from '@/server-actions/favorites';
-import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { useState } from 'react';
 
 export default function FavoriteHeart({
 	isFavorite,
@@ -14,13 +14,13 @@ export default function FavoriteHeart({
 	isFavorite: boolean;
 	id: number;
 }) {
-	const router = useRouter();
+	const [favorite, setFavorite] = useState(isFavorite);
 
-	return isFavorite ? (
+	return favorite ? (
 		<button
 			onClick={async () => {
 				await removeFromFavorites(id);
-				router.refresh();
+				setFavorite(false);
 				toast('Removed from favorites');
 			}}
 			className='absolute bottom-2 right-2 flex items-end'
@@ -31,7 +31,7 @@ export default function FavoriteHeart({
 		<button
 			onClick={async () => {
 				await addToFavorites(id);
-				router.refresh();
+				setFavorite(true);
 				toast('Added to favorites');
 			}}
 			className='absolute bottom-2 right-2 flex items-end'
