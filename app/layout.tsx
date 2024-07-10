@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from 'sonner';
 import { ThemeProvider } from '@/components/ThemeToggler/ThemeToggler';
+import FavoritesContextProvider from '@/components/FavoritesContext/FavoritesContext';
 
 const fontSans = FontSans({
 	subsets: ['latin'],
@@ -30,7 +31,9 @@ export default function RootLayout({
 					)}
 				>
 					<Toaster />
-					{children}
+					<FavoritesContextProvider>
+						{children}
+					</FavoritesContextProvider>
 					<footer className='text-center pt-3'>ViewVault 2024</footer>
 				</body>
 			</html>

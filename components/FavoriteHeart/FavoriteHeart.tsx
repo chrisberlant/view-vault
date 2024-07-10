@@ -1,39 +1,20 @@
 'use client';
 import { HeartIcon } from 'lucide-react';
-import {
-	removeFromFavorites,
-	addToFavorites,
-} from '@/server-actions/favorites';
-import { toast } from 'sonner';
-import { useState } from 'react';
+import { useStore } from '@/lib/store';
 
-export default function FavoriteHeart({
-	isFavorite,
-	id,
-}: {
-	isFavorite: boolean;
-	id: number;
-}) {
-	const [favorite, setFavorite] = useState(isFavorite);
+export default function FavoriteHeart({ id }: { id: number }) {
+	const { favorites, addFavorite, removeFavorite } = useStore();
 
-	return favorite ? (
+	return favorites.some((fav) => fav === id) ? (
 		<button
-			onClick={async () => {
-				await removeFromFavorites(id);
-				setFavorite(false);
-				toast('Removed from favorites');
-			}}
+			onClick={() => removeFavorite(id)}
 			className='absolute bottom-2 right-2 flex items-end'
 		>
 			<HeartIcon fill='red' className='hover:scale-125 cursor-pointer' />
 		</button>
 	) : (
 		<button
-			onClick={async () => {
-				await addToFavorites(id);
-				setFavorite(true);
-				toast('Added to favorites');
-			}}
+			onClick={() => addFavorite(id)}
 			className='absolute bottom-2 right-2 flex items-end'
 		>
 			<HeartIcon fill='grey' className='hover:scale-125 cursor-pointer' />

@@ -18,6 +18,8 @@ export type MovieType = {
 
 export type SeriesType = Omit<MovieType, 'title'> & { name: string };
 
+export type ShowType = MovieType | SeriesType;
+
 export type FailedRequest = {
 	success: boolean;
 	status_code: number;
@@ -30,5 +32,5 @@ export type ShowsListType = {
 		minimum: Date;
 	};
 	page: number;
-	results: MovieType[] | SeriesType[];
+	results: ShowType[];
 };

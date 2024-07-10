@@ -1,15 +1,8 @@
-import { MovieType, SeriesType } from '@/types/tmdbTypes';
-import fetchApi from '@/utils/fetchApi';
-import Image from 'next/image';
-import { imagesPath } from '@/utils/tmdb';
-import prisma from '@/lib/prisma';
-import { auth } from '@/lib/auth';
+'use client';
+import { useStore } from '@/lib/store';
 
-export default async function Page() {
-	const session = await auth();
-	if (!session) return null;
-	console.log(session);
-	const favorites = session.user?.favorites;
+export default function Page() {
+	const { favorites } = useStore();
 
 	return (
 		<section>
